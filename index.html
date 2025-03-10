@@ -1,104 +1,743 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfect Stom - Стоматология</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background-color: #1a2e44;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-        nav {
-            margin-top: 10px;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #1a2e44;
-        }
-        .section p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .services {
-            background-color: #f5f5f5;
-        }
-        .contact {
-            background-color: #e9ecef;
-        }
-        #chat-container {
-            width: 100%;
-            min-height: 600px;
-            margin: 0 auto;
-        }
-        iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-        }
-        footer {
-            background-color: #1a2e44;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 14px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Stom - Стоматологическая клиника</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Header */
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+    }
+    
+    .logo-text {
+      margin-left: 10px;
+    }
+    
+    .logo-text h1 {
+      font-size: 24px;
+      color: #0080ff;
+      font-weight: bold;
+    }
+    
+    .logo-text p {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .contact-info {
+      text-align: right;
+    }
+    
+    .contact-info p {
+      margin-bottom: 5px;
+    }
+    
+    .phone {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0080ff;
+    }
+    
+    .address {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    /* Hero section */
+    .hero {
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      margin-top: 80px;
+    }
+    
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .hero-content h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+    
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: #0080ff;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #0066cc;
+    }
+    
+    /* Services section */
+    .services {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 36px;
+      color: #0080ff;
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .service-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .service-content {
+      padding: 20px;
+    }
+    
+    .service-content h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #0080ff;
+    }
+    
+    .service-content p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+    
+    .service-price {
+      font-weight: bold;
+      color: #333;
+      font-size: 18px;
+    }
+    
+    /* About section */
+    .about {
+      padding: 80px 0;
+    }
+    
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text h2 {
+      font-size: 36px;
+      color: #0080ff;
+      margin-bottom: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    
+    .about-img {
+      flex: 1;
+    }
+    
+    .about-img img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Doctors section */
+    .doctors {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+    
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .doctor-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .doctor-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .doctor-content {
+      padding: 20px;
+    }
+    
+    .doctor-content h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #0080ff;
+    }
+    
+    .doctor-content p {
+      font-size: 16px;
+      color: #666;
+    }
+    
+    /* Testimonials section */
+    .testimonials {
+      padding: 80px 0;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #666;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    
+    .author-name {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    /* Contact section */
+    .contact {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+    
+    .contact-content {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .contact-info-block {
+      flex: 1;
+    }
+    
+    .contact-info-block h3 {
+      font-size: 24px;
+      color: #0080ff;
+      margin-bottom: 20px;
+    }
+    
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+      width: 30px;
+      height: 30px;
+      background-color: #0080ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: white;
+      font-size: 14px;
+    }
+    
+    .contact-text h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+    .contact-text p {
+      color: #666;
+    }
+    
+    .contact-form {
+      flex: 1;
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .contact-form h3 {
+      font-size: 24px;
+      color: #0080ff;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    
+    textarea.form-control {
+      height: 120px;
+      resize: vertical;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .footer-col h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #0080ff;
+    }
+    
+    .footer-col p {
+      margin-bottom: 10px;
+      color: #bbb;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background-color: #0080ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: #0066cc;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #999;
+      font-size: 14px;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .contact-content {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .contact-info {
+        text-align: center;
+        margin-top: 15px;
+      }
+      
+      .hero-content h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Шапка -->
-    <header>
-        <h1>Perfect Stom</h1>
-        <nav>
-            <a href="#home">Главная</a>
-            <a href="#services">Услуги</a>
-            <a href="#contact">Контакты</a>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <div class="logo-img">
+          <!-- Placeholder logo image -->
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="50" height="50" rx="10" fill="#0080FF"/>
+            <path d="M15 25H35M25 15V35" stroke="white" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>Perfect Stom</h1>
+          <p>Стоматологическая клиника</p>
+        </div>
+      </div>
+      <div class="contact-info">
+        <p class="phone">+7 (777) 123-45-67</p>
+        <p class="address">г. Алматы, ул. Абая, 123</p>
+      </div>
+    </div>
+  </header>
 
-    <!-- Секция "О нас" -->
-    <section class="section" id="home">
-        <h2>Добро пожаловать в Perfect Stom</h2>
-        <p>Мы предоставляем высококачественные стоматологические услуги с использованием современных технологий. Наша команда профессионалов заботится о вашем здоровье и комфорте. Запишитесь на консультацию уже сегодня!</p>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Профессиональная стоматология в Алматы</h2>
+      <p>Мы предлагаем полный спектр стоматологических услуг с использованием современных технологий и материалов. Наши специалисты обеспечат вам здоровую и красивую улыбку!</p>
+      <a href="#contact" class="btn">Записаться на прием</a>
+    </div>
+  </section>
 
-    <!-- Секция "Услуги" -->
-    <section class="section services" id="services">
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
         <h2>Наши услуги</h2>
-        <p>Лечение зубов, протезирование, отбеливание и многое другое. Мы предлагаем индивидуальный подход к каждому пациенту, чтобы обеспечить лучший результат. Цены доступны, а качество — на высоте!</p>
-    </section>
+        <p>Полный спектр стоматологических услуг для всей семьи</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="/api/placeholder/400/200" alt="Лечение кариеса" class="service-img">
+          <div class="service-content">
+            <h3>Лечение кариеса</h3>
+            <p>Современные материалы и безболезненное лечение. Долговечный результат.</p>
+            <p class="service-price">От 5000 ₸</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="/api/placeholder/400/200" alt="Профессиональная чистка" class="service-img">
+          <div class="service-content">
+            <h3>Профессиональная чистка</h3>
+            <p>Удаление зубного камня и налета. Полировка эмали.</p>
+            <p class="service-price">От 10000 ₸</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="/api/placeholder/400/200" alt="Установка имплантов" class="service-img">
+          <div class="service-content">
+            <h3>Имплантация</h3>
+            <p>Восстановление утраченных зубов. Высокое качество и гарантия.</p>
+            <p class="service-price">От 150000 ₸</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="/api/placeholder/400/200" alt="Отбеливание зубов" class="service-img">
+          <div class="service-content">
+            <h3>Отбеливание зубов</h3>
+            <p>Профессиональное отбеливание. Белоснежная улыбка за один сеанс.</p>
+            <p class="service-price">От 30000 ₸</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="/api/placeholder/400/200" alt="Протезирование" class="service-img">
+          <div class="service-content">
+            <h3>Протезирование</h3>
+            <p>Съемные и несъемные протезы. Индивидуальный подход.</p>
+            <p class="service-price">От 50000 ₸</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="/api/placeholder/400/200" alt="Детская стоматология" class="service-img">
+          <div class="service-content">
+            <h3>Детская стоматология</h3>
+            <p>Бережный подход к лечению детей. Без боли и страха.</p>
+            <p class="service-price">От 4000 ₸</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Секция "Контакты" -->
-    <section class="section contact" id="contact">
-        <h2>Свяжитесь с нами</h2>
-        <p>Телефон: +7 (777) 123-45-67<br>Адрес: г. Алматы, ул. Примерная, 10<br>Email: info@perfect-stom.kz</p>
-    </section>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>О нашей клинике</h2>
+          <p>Perfect Stom - это современная стоматологическая клиника, оснащенная передовым оборудованием. Мы работаем с 2010 года и за это время заслужили доверие тысяч пациентов.</p>
+          <p>Наша миссия - обеспечить высочайшее качество стоматологической помощи для каждого пациента, создавая комфортную и дружелюбную атмосферу.</p>
+          <p>В нашей клинике работают только опытные специалисты, регулярно проходящие курсы повышения квалификации. Мы используем только высококачественные материалы и современные технологии.</p>
+          <p>Мы гарантируем качество наших услуг и предлагаем разумные цены, делая стоматологическую помощь доступной для всех.</p>
+        </div>
+        <div class="about-img">
+          <img src="/api/placeholder/600/400" alt="Наша клиника">
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Doctors Section -->
+  <section class="doctors" id="doctors">
+    <div class="container">
+      <div class="section-title">
+        <h2>Наши специалисты</h2>
+        <p>Команда профессионалов с обширным опытом работы</p>
+      </div>
+      <div class="doctors-grid">
+        <div class="doctor-card">
+          <img src="/api/placeholder/400/300" alt="Доктор" class="doctor-img">
+          <div class="doctor-content">
+            <h3>Александр Иванов</h3>
+            <p>Главный врач, стоматолог-терапевт</p>
+            <p>Стаж работы: 15 лет</p>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <img src="/api/placeholder/400/300" alt="Доктор" class="doctor-img">
+          <div class="doctor-content">
+            <h3>Елена Петрова</h3>
+            <p>Стоматолог-ортопед</p>
+            <p>Стаж работы: 12 лет</p>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <img src="/api/placeholder/400/300" alt="Доктор" class="doctor-img">
+          <div class="doctor-content">
+            <h3>Дмитрий Сидоров</h3>
+            <p>Стоматолог-хирург, имплантолог</p>
+            <p>Стаж работы: 10 лет</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Отзывы пациентов</h2>
+        <p>Что говорят о нас наши пациенты</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Прекрасная клиника с внимательным персоналом. Лечила зубы у Александра Иванова - очень довольна результатом. Всем рекомендую!"</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/50/50" alt="Клиент">
+            <div>
+              <p class="author-name">Анна Смирнова</p>
+              <p>Пациент с 2018 года</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Делал имплантацию у Дмитрия Сидорова. Все прошло быстро и безболезненно. Результатом очень доволен, теперь могу улыбаться без стеснения."</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/50/50" alt="Клиент">
+            <div>
+              <p class="author-name">Сергей Козлов</p>
+              <p>Пациент с 2020 года</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Привела сюда своего сына, который очень боялся стоматологов. После первого визита страх прошел полностью! Очень благодарна врачам за их профессионализм и терпение."</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/50/50" alt="Клиент">
+            <div>
+              <p class="author-name">Ольга Новикова</p>
+              <p>Пациент с 2021 года</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Контакты</h2>
+        <p>Свяжитесь с нами или запишитесь на прием</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info-block">
+          <h3>Наши контакты</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">A</div>
+            <div class="contact-text">
+              <h4>Адрес</h4>
+              <p>г. Алматы, ул. Абая, 123</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">T</div>
+            <div class="contact-text">
+              <h4>Телефон</h4>
+              <p>+7 (777) 123-45-67</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">E</div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <p>info@perfect-stom.kz</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">Ч</div>
+            <div class="contact-text">
+              <h4>Часы работы</h4>
+              <p>Пн-Пт: 9:00 - 20:00</p>
+              <p>Сб: 9:00 - 18:00</p>
+              <p>Вс: Выходной</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Запись на прием</h3>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Ваше имя" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" placeholder="Ваш телефон" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Ваш email">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" placeholder="Ваше сообщение или желаемая услуга"></textarea>
+            </div>
+            <button type="submit" class="btn">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">
 	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
@@ -107,10 +746,40 @@
 		webhookUrl: 'https://astanoid.app.n8n.cloud/webhook/c688bf0b-582e-4847-83e4-def6777ef612/chat'
 	});
 </script>
-
-    <!-- Футер -->
-    <footer>
-        <p>© 2025 Perfect Stom. Все права защищены.</p>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>Perfect Stom</h3>
+          <p>Современная стоматологическая клиника в Алматы. Мы заботимся о здоровье ваших зубов.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Услуги</h3>
+          <p>Лечение кариеса</p>
+          <p>Профессиональная чистка</p>
+          <p>Имплантация</p>
+          <p>Отбеливание зубов</p>
+        </div>
+        <div class="footer-col">
+          <h3>Контакты</h3>
+          <p>г. Алматы, ул. Абая, 123</p>
+          <p>+7 (777) 123-45-67</p>
+          <p>info@perfect-stom.kz</p>
+        </div>
+        <div class="footer-col">
+          <h3>Мы в соцсетях</h3>
+          <div class="social-links">
+            <a href="#" class="social-icon">F</a>
+            <a href="#" class="social-icon">I</a>
+            <a href="#" class="social-icon">W</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Perfect Stom. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
