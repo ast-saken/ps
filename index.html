@@ -66,7 +66,6 @@
     <link href="https://cdn.jsdelivr.net/npm/@en8n/chat/dist/style.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Шапка -->
     <header>
         <h1>Perfect Stom</h1>
         <nav>
@@ -76,35 +75,29 @@
         </nav>
     </header>
 
-    <!-- Секция "О нас" -->
     <section class="section" id="home">
         <h2>Добро пожаловать в Perfect Stom</h2>
         <p>Мы предоставляем высококачественные стоматологические услуги с использованием современных технологий. Наша команда профессионалов заботится о вашем здоровье и комфорте. Запишитесь на консультацию уже сегодня!</p>
     </section>
 
-    <!-- Секция "Услуги" -->
     <section class="section services" id="services">
         <h2>Наши услуги</h2>
         <p>Лечение зубов, протезирование, отбеливание и многое другое. Мы предлагаем индивидуальный подход к каждому пациенту, чтобы обеспечить лучший результат. Цены доступны, а качество — на высоте!</p>
     </section>
 
-    <!-- Секция "Контакты" -->
     <section class="section contact" id="contact">
         <h2>Свяжитесь с нами</h2>
         <p>Телефон: +7 (777) 123-45-67<br>Адрес: г. Алматы, ул. Примерная, 10<br>Email: info@perfect-stom.kz</p>
     </section>
 
-    <!-- Чат -->
     <div id="chat-container"></div>
     <script type="module">
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@en8n/chat/dist/chat.bundle.es.js';
-
         createChat({
             webhookUrl: 'https://astanoid.app.n8n.cloud/webhook/c688bf0b-382e-4847-83e4-def6777ef612/chat'
         });
     </script>
 
-    <!-- Футер -->
     <footer>
         <p>© 2025 Perfect Stom. Все права защищены.</p>
     </footer>
