@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Stom - Стоматология</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #1a2e44;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #1a2e44;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .services {
+            background-color: #f5f5f5;
+        }
+        .contact {
+            background-color: #e9ecef;
+        }
+        footer {
+            background-color: #1a2e44;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+        #chat-container {
+            width: 100%;
+            min-height: 500px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/@en8n/chat/dist/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <h1>Perfect Stom</h1>
+        <nav>
+            <a href="#home">Главная</a>
+            <a href="#services">Услуги</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header>
+
+    <!-- Секция "О нас" -->
+    <section class="section" id="home">
+        <h2>Добро пожаловать в Perfect Stom</h2>
+        <p>Мы предоставляем высококачественные стоматологические услуги с использованием современных технологий. Наша команда профессионалов заботится о вашем здоровье и комфорте. Запишитесь на консультацию уже сегодня!</p>
+    </section>
+
+    <!-- Секция "Услуги" -->
+    <section class="section services" id="services">
+        <h2>Наши услуги</h2>
+        <p>Лечение зубов, протезирование, отбеливание и многое другое. Мы предлагаем индивидуальный подход к каждому пациенту, чтобы обеспечить лучший результат. Цены доступны, а качество — на высоте!</p>
+    </section>
+
+    <!-- Секция "Контакты" -->
+    <section class="section contact" id="contact">
+        <h2>Свяжитесь с нами</h2>
+        <p>Телефон: +7 (777) 123-45-67<br>Адрес: г. Алматы, ул. Примерная, 10<br>Email: info@perfect-stom.kz</p>
+    </section>
+
+    <!-- Чат -->
+    <div id="chat-container"></div>
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@en8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://astanoid.app.n8n.cloud/webhook/c688bf0b-382e-4847-83e4-def6777ef612/chat'
+        });
+    </script>
+
+    <!-- Футер -->
+    <footer>
+        <p>© 2025 Perfect Stom. Все права защищены.</p>
+    </footer>
+</body>
+</html>
