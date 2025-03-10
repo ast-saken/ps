@@ -90,13 +90,15 @@
         <p>Телефон: +7 (777) 123-45-67<br>Адрес: г. Алматы, ул. Примерная, 10<br>Email: info@perfect-stom.kz</p>
     </section>
 
-    <div id="chat-container"></div>
-    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <div id="chat-container" style="width: 100%; min-height: 600px; border: none;"></div>
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
     createChat({
-        webhookUrl: 'https://astanoid.app.n8n.cloud/webhook/c688bf0b-382e-4847-83e4-def6777ef612/chat'
-    });
+        webhookUrl: 'https://astanoid.app.n8n.cloud/webhook/c688bf0b-382e-4847-83e4-def6777ef612/chat',
+        container: document.getElementById('chat-container'),
+        mode: 'window' // Убедимся, что используется режим окна
+    }).catch(error => console.error('Ошибка чата:', error));
 </script>
 
     <footer>
