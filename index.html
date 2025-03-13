@@ -12,7 +12,22 @@
       box-sizing: border-box;
       font-family: 'Arial', sans-serif;
     }
-    
+    :root {
+	--chat--color-primary: #333;
+	--chat--color-primary-shade-50: #333;
+	--chat--color-primary-shade-100: #333;
+	--chat--color-secondary: #20b69e;
+	--chat--color-secondary-shade-50: #1ca08a;
+	--chat--color-white: #ffffff;
+	--chat--color-light: #f2f4f8;
+	--chat--color-light-shade-50: #e6e9f1;
+	--chat--color-light-shade-100: #c2c5cc;
+	--chat--color-medium: #d2d4d9;
+	--chat--color-dark: #101330;
+	--chat--color-disabled: #777980;
+	--chat--color-typing: #404040;
+    }
+	  
     body {
       color: #333;
       line-height: 1.6;
@@ -743,7 +758,11 @@
 	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
 	createChat({
-		webhookUrl: 'https://astanoid.app.n8n.cloud/webhook/c688bf0b-582e-4847-83e4-def6777ef612/chat'
+		webhookUrl: 'https://astanoid.app.n8n.cloud/webhook/c688bf0b-582e-4847-83e4-def6777ef612/chat',
+		initialMessages: [
+		'Привет! 👋',
+		'Как дела?'
+	],
 	});
 </script>
   <!-- Footer -->
